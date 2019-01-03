@@ -68,9 +68,13 @@ async def ajuda(ctx):
     
 @bot.command(pass_context=True)
 async def ping(ctx):
-    embed = discord.Embed(title="Pong! :ping_pong:")
-    await bot.say(embed=embed)
-    
+    """ Pong! """
+    await delete_message(ctx.message)
+    before = time.monotonic()
+    message = await ctx.send("Pong!")
+    ping = (time.monotonic() - before) * 1000
+    await message.edit(content=f"Pong!  `{int(ping)}ms`")
+    print(f'Ping {int(ping)}ms')
     
     
 bot.run('NTI5OTcyODM4OTM3OTE5NDg4.Dw4nWw.bg-PuX1c0KVHO2zJuSHFFtkq-HU')
