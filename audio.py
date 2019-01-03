@@ -66,15 +66,9 @@ async def ajuda(ctx):
     embed.add_field(name="ping", value="Veja minha velocidade de resposta!", inline=True)
     await bot.say(embed=embed)
     
-@bot.command(pass_context=True)
+@bot.command()
 async def ping(ctx):
-    """ Pong! """
-    await delete_message(ctx.message)
-    before = time.monotonic()
-    message = await ctx.send("Pong!")
-    ping = (time.monotonic() - before) * 1000
-    await message.edit(content=f"Pong!  `{int(ping)}ms`")
-    print(f'Ping {int(ping)}ms')
+    return await ctx.send('Pong! {0}'.format(round(bot.latency, 1)
     
     
 bot.run('NTI5OTcyODM4OTM3OTE5NDg4.Dw4nWw.bg-PuX1c0KVHO2zJuSHFFtkq-HU')
